@@ -5,13 +5,15 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'feabff93bfc17d29f4a3f4196c3473c8'
 
 @app.route('/')
-@app.route('/home', methods=['GET','POST'])
+@app.route('/home')
 def home():
-	form = WeightForm()
-	if form.validate_on_submit():
-		flash(f'Entered a weight','success')
-		return redirect(url_for('answer'))
-	return render_template('home.html', title = 'Home', form=form)
+	#methods=['GET','POST']
+	#form = WeightForm()
+	#if form.validate_on_submit():
+		#flash(f'Entered a weight','success')
+		#return redirect(url_for('answer'))
+	#return render_template('home.html', title = 'Home', form=form)
+	return render_template('home.html',  title = 'Home')
 #^This routes the user to the home page as the default
 
 @app.route('/about')
@@ -45,7 +47,7 @@ def login():
 			flash('Login Unsuccessful. Please check username and password', 'danger')
 	return render_template('login.html', title='Login', form=form)
 
-@app.route('/answer')
+@app.route('/answer', methods=["POST"])
 # Shows plates needed for specific weight
 def answer():
 	weights = {"45 lb": 0, "35 lb": 0, "25 lb": 0, "10 lb": 0, "5 lb": 0, "2.5 lb": 0}
