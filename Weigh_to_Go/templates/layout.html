@@ -17,15 +17,6 @@
 	{% endif %}
 </head>
 <body style="background-color: #EAEDED;"> <!--The purple words & numbers is the hex code for that color-->
-	{% with messages = get_flashed_messages(with_categories=true) %}
-		{% if messages %}
-			{% for category, message in messages %}
-				<div class="alert alert-{{ category }}">
-					{{ message }}
-				</div>
-			{% endfor %}
-		{% endif %}
-	{% endwith %}
 	 <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
@@ -49,6 +40,16 @@
     </header>
 	
 	<div class="p-3 mb-2 bg-primary text-white">Team Kaa</div>
+
+	{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+				<div class="alert alert-{{ category }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
 
 	<div class='container'>
 		<center>{% block content %}{% endblock %}</center>
