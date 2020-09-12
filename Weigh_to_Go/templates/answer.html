@@ -2,4 +2,12 @@
 {% block content %}
 	<h1>Here are the plates you will need for each side of the bar:</h1>
 	<br/><br/>
+
+	<ul>
+      	{% for item in weights %}
+      		{{ item }} : {{ weights[item] }}<br/><br/>
+
+      	{% endfor %}
+  	</ul>
+
 {% endblock content %}
