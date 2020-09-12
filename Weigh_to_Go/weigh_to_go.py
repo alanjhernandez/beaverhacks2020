@@ -25,6 +25,7 @@ def about():
 # a web server
 def register():
 	form = RegistrationForm()
+	form.validate()
 	# object code is found in forms.py
 	if form.validate_on_submit():
 		# form validates, alert user 
