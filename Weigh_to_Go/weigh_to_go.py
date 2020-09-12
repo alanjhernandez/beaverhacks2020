@@ -48,9 +48,41 @@ def login():
 @app.route('/answer')
 # Shows plates needed for specific weight
 def answer():
-	#title = "Your Weights"
-	#weights = {"45 lb": 0, "35 lb": 0, "25 lb": 0, "10 lb": 0, "5 lb": 0, "2.5 lb": 0}
-	return render_template("answer.html", title='Answer')
+	weights = {"45 lb": 0, "35 lb": 0, "25 lb": 0, "10 lb": 0, "5 lb": 0, "2.5 lb": 0}
+	plates = request.form.get("plates")
+	title = "Your Plates"
+	weight = (int(plates) - 45.0)/2.0
+    
+	if weight%1 != 0:
+		weight = weight - 2.5
+		weights["2.5 lb"] =+ 1
+
+	if weight >= 45.0:
+		num45 = weight//45
+		weight = weight - (num45 * 45.0)
+		weights["45 lb"] =+ int(num45)
+
+	if weight >= 35.0:
+		num35 = weight//35
+		weight = weight - (num35 * 35.0)
+		weights["35 lb"] =+ int(num35)
+
+	if weight >= 25.0:
+		num25 = weight//25
+		weight = weight - (num25 * 25.0)
+		weights["25 lb"] =+ int(num25)
+
+	if weight >= 10.0:
+		num10 = weight//10
+		weight = weight - (num10 * 10.0)
+		weights["10 lb"] =+ int(num10)
+
+	if weight >= 5.0:
+		num5 = weight//5
+		weight = weight - (num5 * 5.0)
+		weights["5 lb"] =+ int(num5)
+
+	return render_template("/answer.html", title=title, weights=weights)
 
 
 if __name__== '__main__':
