@@ -7,13 +7,13 @@ app.config['SECRET_KEY'] = 'feabff93bfc17d29f4a3f4196c3473c8'
 @app.route('/')
 @app.route('/home')
 def home():
-	#methods=['GET','POST']
-	#form = WeightForm()
-	#if form.validate_on_submit():
-		#flash(f'Entered a weight','success')
-		#return redirect(url_for('answer'))
-	#return render_template('home.html', title = 'Home', form=form)
-	return render_template('home.html',  title = 'Home')
+	methods=['GET','POST']
+	form = WeightForm()
+	if form.validate_on_submit():
+		flash(f'Entered a weight','success')
+		return redirect(url_for('answer'))
+	return render_template('home.html', title = 'Home', form=form)
+	#return render_template('home.html',  title = 'Home')
 #^This routes the user to the home page as the default
 
 @app.route('/about')
