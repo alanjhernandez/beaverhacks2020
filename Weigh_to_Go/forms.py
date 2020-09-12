@@ -20,3 +20,7 @@ class LoginForm(FlaskForm):
 		validators=[DataRequired()])
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
+
+class WeightForm(FlaskForm):
+	weight = StringField('Weight', validators=[DataRequired()])
+	enter = SubmitField('Enter')

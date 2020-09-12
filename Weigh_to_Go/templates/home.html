@@ -2,9 +2,25 @@
 {% block content %}
 	<h1>Welcome to Weigh to Go</h1>
 	<p>This service will  show the plates needed for the exercise being done</p>
-	<form>
+<!-- 	<form>
  		<label for="userplates">Weight:</label><br>   
-  		<input type="text" id="userplates" name="plates"><br>	<!-- Box so user can enter informaiton. This box still requires the calculations --> 
+  		<input type="text" id="userplates" name="plates"><br>	Box so user can enter informaiton. This box still requires the calculations 
 		<br><input type="submit" value="Submit">
+	</form> -->
+
+<div class="content-section">
+	<form method="GET" action="">
+		{{ form.csrf_token }}
+		<fieldset class="form-group">
+			<div class="form-group">
+				{{ form.weight.label(class="form-control-label") }}
+				{{ form.weight(class="form-control form-control-md from-control") }}
+			</div>
+		</fieldset>
+		<div class="form-group">
+			{{ form.enter(class="btn btn-outline-info") }}
+		</div>
 	</form>
+</div>
+
 {% endblock content %}
