@@ -4,8 +4,6 @@ app = Flask(__name__)
 
 #app.config['SECRET_KEY'] = 'feabff93bfc17d29f4a3f4196c3473c8'
 
-weights = {"45 lb": 0, "35 lb": 0, "25 lb": 0, "10 lb": 0, "5 lb": 0, "2.5 lb": 0}
-
 @app.route('/')
 @app.route('/home')
 def home():
@@ -29,9 +27,11 @@ def login():
 
 @app.route('/answer', methods=["POST"])
 def form():
+	
+	weights = {"45 lb": 0, "35 lb": 0, "25 lb": 0, "10 lb": 0, "5 lb": 0, "2.5 lb": 0}
 	plates = request.form.get("plates")
 	
-	title = "Your Weights"
+	title = "Your Plates"
 	
 	weight = (int(plates) - 45.0)/2.0
     
