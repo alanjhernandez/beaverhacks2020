@@ -13,7 +13,6 @@ def home():
 		flash(f'Entered a weight','success')
 		return redirect(url_for('answer'))
 	return render_template('home.html', title = 'Home', form=form)
-	#return render_template('home.html',  title = 'Home')
 #^This routes the user to the home page as the default
 
 @app.route('/about')
