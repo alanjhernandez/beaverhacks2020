@@ -53,6 +53,10 @@ def answer():
 	weights = {"45 lb": 0, "35 lb": 0, "25 lb": 0, "10 lb": 0, "5 lb": 0, "2.5 lb": 0}
 	plates = request.form.get("plates")
 	title = "Your Plates"
+	
+	if int(plates)< 45 or (int(plates)%5) != 0:
+		return render_template("/error.html")
+
 	weight = (int(plates) - 45.0)/2.0
     
 	if weight%1 != 0:
@@ -86,6 +90,9 @@ def answer():
 
 	return render_template("/answer.html", title=title, weights=weights)
 
+@app.route('/error')
+def error():
+    return render_template('/error.html', title = 'Error')
 
 if __name__== '__main__':
 	app.run(debug=True)
